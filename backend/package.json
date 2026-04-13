@@ -1,0 +1,16 @@
+{
+  "name": "final-project-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend for final project",
+  "main": "app.mjs",
+  "scripts": {
+    "start": "node app.mjs",
+    "dev": "node --watch app.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  }
+}

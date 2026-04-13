@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Backend API service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ierg3840-backend
+    ports:
+      - "53840:53840"
+    environment:
+      - NODE_ENV=production
+      - PORT=53840
+      # Add your MongoDB connection string as environment variable
+      # - MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/dbname
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:53840/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ierg3840-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+# Optional
+# Uncomment the section below to include MongoDB
+#
+# services:
+#   mongodb:
+#     image: mongo:6
+#     container_name: ierg3840-mongodb
+#     ports:
+#       - "27017:27017"
+#     environment:
+#       - MONGO_INITDB_ROOT_USERNAME=admin
+#       - MONGO_INITDB_ROOT_PASSWORD=password123
+#     volumes:
+#       - mongodb_data:/data/db
+#     networks:
+#       - app-network
+#     restart: unless-stopped
+#
+# volumes:
+#   mongodb_data:
