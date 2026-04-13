@@ -2,6 +2,8 @@
 
 A full-stack web application for saving, managing, and navigating between custom locations on an interactive map. Built with React, Express.js, and MongoDB.
 
+![GeoPin Screenshot](screenshot.png)
+
 ## Tech Stack
 
 | Layer | Technology |

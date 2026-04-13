@@ -403,10 +403,7 @@ const CombinedMap = ({ user }) => {
         minWidth: '250px',
         maxWidth: '300px'
       }}>
-        <div style={{ margin: '0 0 15px 0', fontSize: '20px', fontWeight: 'bold', color: '#2c3e50', textAlign: 'center', borderBottom: '2px solid #3498db', paddingBottom: '10px' }}>
-          Zhang Chin Ming
-        </div>
-        <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#333' }}>Map Controls</h3>
+        <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#333', borderBottom: '2px solid #3498db', paddingBottom: '10px' }}>Map Controls</h3>
         
         <div style={{ marginBottom: '10px' }}>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Navigate to City:</label>
