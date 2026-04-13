@@ -19,8 +19,8 @@ gcloud auth login
 gcloud config set project YOUR_PROJECT_ID
 
 # Or create a new project
-gcloud projects create ierg3840-final-project
-gcloud config set project ierg3840-final-project
+gcloud projects create geopin
+gcloud config set project geopin
 ```
 
 ### Step 2: Enable Required APIs
@@ -122,7 +122,3 @@ gcloud app logs read
 gcloud app services delete default
 ```
 
-## Points Achievement
-✓ Successfully deploying to GCP with public URL = **5 points**
-
-Remember to include the public URL in your project report!
