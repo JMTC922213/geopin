@@ -66,6 +66,7 @@ docker-compose.yml                 # Orchestrates both services
 | `PUT` | `/profile/:email` | Update user profile |
 | `GET` | `/locations` | List locations (filterable by owner/category) |
 | `POST` | `/locations` | Create a location |
+| `PUT` | `/locations/:id` | Update a location |
 | `DELETE` | `/locations/:id` | Delete a location |
 
 ## Getting Started

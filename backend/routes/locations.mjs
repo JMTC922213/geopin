@@ -69,6 +69,43 @@ router.post('/locations', async (req, res) => {
   }
 });
 
+// Update a location
+router.put('/locations/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, latitude, longitude, category, description } = req.body;
+
+  const updates = {};
+  if (name) updates.name = name.trim();
+  if (latitude !== undefined) updates.latitude = parseFloat(latitude);
+  if (longitude !== undefined) updates.longitude = parseFloat(longitude);
+  if (category) updates.category = category;
+  if (description !== undefined) updates.description = description;
+
+  if (Object.keys(updates).length === 0) {
+    res.status(400).send({ success: false, message: 'No fields to update' });
+    return;
+  }
+
+  try {
+    const database = getDatabase();
+    const collection = database.collection('Location');
+
+    const result = await collection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: updates }
+    );
+
+    if (result.matchedCount > 0) {
+      res.status(200).send({ success: true, message: 'Location updated' });
+    } else {
+      res.status(404).send({ success: false, message: 'Location not found' });
+    }
+  } catch (err) {
+    console.error(`Error updating location: ${err}`);
+    res.status(500).send({ success: false, message: 'System error' });
+  }
+});
+
 // Delete a location
 router.delete('/locations/:id', async (req, res) => {
   const { id } = req.params;
